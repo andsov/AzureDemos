@@ -1,0 +1,15 @@
+﻿-ARM template needs specify ResourceGroup (potentially)
+-Storage Account
+-App Service Plan
+-App Service
+
+Setup with octopus
+https://blog.euri.com/create-build-and-deploy-azure-functions-with-visual-studio-teamcity-and-octopus-deploy/
+
+Link to setup Azure Powershell
+https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-1.8.0&viewFallbackFrom=azps-1.3.0 
+
+Migrating from AzureRM to Az which uses dot.net standard
+https://about-azure.com/2018/12/21/how-to-migrate-azure-powershell-from-azurerm-to-the-new-az-module/
+
+Get storage context

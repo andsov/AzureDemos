@@ -27,7 +27,7 @@
   "variables": {
     "repoUrl": "https://github.com/AzureBytes/functionshttpecho.git",
     "branch": "master",
-    "functionName": "Echo",
+    "functionName": "TextLocalFunction",
     "hostingPlanName": "[parameters('functionAppName')]",
     "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
     "storageACcountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
