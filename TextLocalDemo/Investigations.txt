@@ -11,5 +11,14 @@ https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-1.8.0&
 
 Migrating from AzureRM to Az which uses dot.net standard
 https://about-azure.com/2018/12/21/how-to-migrate-azure-powershell-from-azurerm-to-the-new-az-module/
+https://azure.microsoft.com/en-gb/blog/azure-powershell-cross-platform-az-module-replacing-azurerm/
+
+Deployment
+https://docs.microsoft.com/en-us/azure/azure-functions/functions-infrastructure-as-code
+
+Deployment using Az module (localted in Deploye -> Automate resource deployment)
+
+Connecting to private repo in GIT
+https://stackoverflow.com/questions/33239397/deploying-website-from-private-github-repository-using-arm-templates
 
 Get storage context

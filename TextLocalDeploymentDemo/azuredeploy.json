@@ -16,25 +16,39 @@
         "description": "The name of the function app to create. Must be globally unique."
       }
     },
+    "functionName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the azure function to create."
+      }
+    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "Location for all resources."
       }
+    },
+    "storageAccountName": {
+      "type": "string",
+      "defaultValue": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
+      "metadata": {
+        "description": ""
+      }
     }
   },
   "variables": {
-    "repoUrl": "https://github.com/AzureBytes/functionshttpecho.git",
+    "repoUrl": "https://github.com/andsov/AzureFunctions", //"https://github.com/andsov/AzureDemos.git", //"https://github.com/AzureBytes/functionshttpecho.git",
     "branch": "master",
-    "functionName": "TextLocalFunction",
+    //"functionName": "TextLocalFunction",
     "hostingPlanName": "[parameters('functionAppName')]",
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'azfunctions')]",
+    "storageAccountName": "[parameters('storageAccountName')]",
     "storageACcountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
     "LogicAppLocation": "[parameters('location')]",
     "storageAccountType": "Standard_LRS"
   },
   "resources": [
+    // AZURE FUNCTION
     {
       "name": "[parameters('LogicAppName')]",
       "type": "Microsoft.Logic/workflows",
@@ -55,7 +69,7 @@
               "inputs": {
                 "body": "@triggerBody()",
                 "function": {
-                  "id": "[resourceId('Microsoft.Web/sites/functions', parameters('functionAppName'), variables('functionName'))]"
+                  "id": "[resourceId('Microsoft.Web/sites/functions', parameters('functionAppName'), parameters('LogicAppName'))]"
                 }
               },
               "runAfter": {}
@@ -89,6 +103,7 @@
         "parameters": {}
       }
     },
+    // STORAGE ACCOUNT
     {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('storageAccountName')]",
@@ -98,6 +113,7 @@
         "accountType": "[variables('storageAccountType')]"
       }
     },
+    // HOSTING PLAN CONFIG
     {
       "type": "Microsoft.Web/serverfarms",
       "apiVersion": "2015-04-01",
@@ -109,6 +125,7 @@
         "sku": "Dynamic"
       }
     },
+    // FUNCTION APP
     {
       "apiVersion": "2015-08-01",
       "type": "Microsoft.Web/sites",
@@ -161,7 +178,9 @@
           "properties": {
             "RepoUrl": "[variables('repoURL')]",
             "branch": "[variables('branch')]",
-            "IsManualIntegration": true
+            "IsManualIntegration": false,
+            "deploymentRollbackEnabled": false,
+            "isMercurial": false
           }
         }
       ]

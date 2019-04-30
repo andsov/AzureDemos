@@ -1,10 +1,11 @@
 #Requires -Version 3.0
 
 Param(
-    [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
-    [string] $ResourceGroupName = 'AzureFunctionStudy',
+    #[string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
+	[string] $ResourceGroupLocation = 'uksouth',
+    [string] $ResourceGroupName = 'AzureFunctionStudy',#'AzureFunctionDeployment',
     [switch] $UploadArtifacts,
-    [string] $StorageAccountName,
+    [string] $StorageAccountName = 'azuredeploymentdemo666',
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
     [string] $TemplateFile = 'azuredeploy.json',
     [string] $TemplateParametersFile = 'azuredeploy.parameters.json',
@@ -59,7 +60,7 @@ if ($UploadArtifacts) {
         $StorageAccountName = 'stage' + ((Get-AzureRmContext).Subscription.SubscriptionId).Replace('-', '').substring(0, 19)
     }
 
-    $StorageAccount = (Get-AzureRmStorageAccount | Where-Object{$_.StorageAccountName -eq $StorageAccountName})
+    $StorageAccount = (Get-AzureRmStorageAccount -debug | Where-Object{$_.StorageAccountName -eq $StorageAccountName})
 
     # Create the storage account if it doesn't already exist
     if ($StorageAccount -eq $null) {

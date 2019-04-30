@@ -3,10 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "LogicAppName": {
-      "value": null
+      "value": "TextLocalFunction"
     },
     "functionAppName": {
-      "value": null
-    }
+      "value": "DeployedAzureFunctionApp" //"DeployedAzureFunction"
+    },
+    "functionName": {
+      "value": "TextLocalFunction"
+    },
+    "storageAccountName": {
+      "value": "azuredeploymentdemo666"
+    } 
   }
 }
