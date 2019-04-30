@@ -38,7 +38,7 @@
     }
   },
   "variables": {
-    "repoUrl": "https://github.com/andsov/AzureFunctions", //"https://github.com/andsov/AzureDemos.git", //"https://github.com/AzureBytes/functionshttpecho.git",
+    "repoUrl": "https://github.com/andsov/AzureDemos.git", //"https://github.com/andsov/AzureFunctions", //"https://github.com/andsov/AzureDemos.git", //"https://github.com/AzureBytes/functionshttpecho.git",
     "branch": "master",
     //"functionName": "TextLocalFunction",
     "hostingPlanName": "[parameters('functionAppName')]",
@@ -158,7 +158,7 @@
             },
             {
               "name": "FUNCTIONS_EXTENSION_VERSION",
-              "value": "~1"
+              "value": "~2"
             },
             {
               "name": "WEBSITE_NODE_DEFAULT_VERSION",
