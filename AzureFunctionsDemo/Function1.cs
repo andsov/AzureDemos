@@ -15,7 +15,7 @@ namespace AzureFunctionsDemo
         public static IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]HttpRequest req, TraceWriter log)
         {
             log.Info("C# HTTP trigger function processed a request.");
-
+            log.Info("Adding another log message for test purposes.");
             string name = req.Query["name"];
 
             string requestBody = new StreamReader(req.Body).ReadToEnd();
